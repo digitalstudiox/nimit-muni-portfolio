@@ -118,6 +118,62 @@
     pointer-events: none;
   }
 
+  /* Hero image overlay: gentle, responsive gradient to keep image visible while maintaining text legibility. */
+  .hero-image-gradient {
+    /* Lighter, smoother gradient for better image visibility and a softer transition */
+    background-image: linear-gradient(
+      to right,
+      rgba(0,0,0,0.06) 0%,
+      rgba(0,0,0,0.03) 25%,
+      rgba(0,0,0,0.015) 45%,
+      rgba(0,0,0,0.00) 65%
+    );
+    transition: background-image 300ms ease, opacity 300ms ease;
+    will-change: background-image, opacity;
+  }
+
+  /* Slightly stronger overlay on small screens to preserve legibility; lighter on larger screens */
+  @media (min-width: 640px) {
+    .hero-image-gradient {
+      /* keep small-screen legibility but still much lighter */
+      background-image: linear-gradient(
+        to right,
+        rgba(0,0,0,0.08) 0%,
+        rgba(0,0,0,0.04) 30%,
+        rgba(0,0,0,0.02) 45%,
+        rgba(0,0,0,0.00) 72%
+      );
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-image-gradient {
+      /* larger screens: keep overlay minimal so the image reads more clearly */
+      background-image: linear-gradient(
+        to right,
+        rgba(0,0,0,0.05) 0%,
+        rgba(0,0,0,0.025) 40%,
+        rgba(0,0,0,0.00) 75%
+      );
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-image-gradient {
+      background-image: linear-gradient(
+        to right,
+        rgba(0,0,0,0.035) 0%,
+        rgba(0,0,0,0.02) 45%,
+        rgba(0,0,0,0.00) 88%
+      );
+    }
+  }
+
+  /* Slight title outline/shadow to keep words readable when overlapping image (softened) */
+  .hero-title {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.32);
+  }
+
   .animate-gradient {
     background-size: 200% 200%;
     animation: gradient 8s ease infinite;

@@ -94,7 +94,7 @@ const ContactSection = () => {
       <div className="container mx-auto relative z-10 px-[12px]">
         {/* Section header */}
         <div className="relative mb-16 text-center">
-          <span className="font-display text-[8rem] md:text-[12rem] text-primary/10 absolute -top-16 left-1/2 -translate-x-1/2 select-none leading-none">05</span>
+          <span className="hidden md:block font-display text-[8rem] md:text-[12rem] text-primary/10 absolute -top-16 left-1/2 -translate-x-1/2 select-none leading-none">05</span>
           <div className="relative z-10">
             <span className="text-primary text-sm uppercase tracking-[0.3em] font-medium">Let's Connect</span>
             <h2 className="font-display text-5xl md:text-7xl tracking-wider mt-2">GET IN <span className="gradient-text">TOUCH</span></h2>
@@ -170,7 +170,7 @@ const ContactSection = () => {
                   {errors.message && <p id="err-message" className="text-sm text-destructive mt-1">{errors.message}</p>}
                 </div>
 
-                <Button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting} className="w-full font-display text-lg tracking-wider py-6 hover-glow rounded-xl">
+                <Button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting} className="w-full font-display text-lg tracking-wider py-3 md:py-6 hover-glow rounded-xl">
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

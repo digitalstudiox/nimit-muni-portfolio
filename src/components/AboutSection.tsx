@@ -11,7 +11,7 @@ const AboutSection = () => {
           <div className="lg:col-span-5 relative animate-slide-in-left">
             <div className="relative">
               {/* Section number */}
-              <span className="font-display text-[8rem] md:text-[12rem] text-primary/10 absolute -top-16 -left-4 select-none leading-none">
+              <span className="hidden md:block font-display text-[8rem] md:text-[12rem] text-primary/10 absolute -top-16 -left-4 select-none leading-none">
                 01
               </span>
               
@@ -65,7 +65,7 @@ const AboutSection = () => {
             </div>
 
             {/* Info cards grid */}
-            <div className="grid grid-cols-2 gap-4 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
               <div className="glass-card p-5 hover-lift group">
                 <Music className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
                 <h4 className="font-display text-lg tracking-wider mb-1">Multi-Genre</h4>

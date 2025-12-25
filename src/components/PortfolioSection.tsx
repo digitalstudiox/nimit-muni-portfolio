@@ -24,7 +24,7 @@ export default function PortfolioSection() {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="relative mb-14">
-          <span className="font-display text-[8rem] md:text-[12rem] text-primary/10 absolute -top-16 -left-4 select-none">
+          <span className="hidden md:block font-display text-[8rem] md:text-[12rem] text-primary/10 absolute -top-16 -left-4 select-none">
             04
           </span>
           <div className="relative z-10">
@@ -70,6 +70,7 @@ export default function PortfolioSection() {
             src={selectedVideo}
             controls
             autoPlay
+            preload="metadata"
             className="max-w-full max-h-[85vh] rounded-2xl"
             onClick={(e) => e.stopPropagation()}
           />
@@ -95,11 +96,17 @@ function VideoCard({
   return (
     <div
       className="group relative overflow-hidden rounded-2xl cursor-pointer hover-lift"
-      onMouseEnter={() => videoRef.current?.play()}
+      onMouseEnter={() => {
+        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          videoRef.current?.play();
+        }
+      }}
       onMouseLeave={() => {
-        if (videoRef.current) {
-          videoRef.current.pause();
-          videoRef.current.currentTime = 0;
+        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+          }
         }
       }}
       onClick={onClick}
