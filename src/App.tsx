@@ -1,40 +1,20 @@
-import { useEffect } from "react";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
-
-const App = () => {
-  // 🔁 GitHub Pages 404 redirect recovery
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const redirect = params.get("redirect");
-
-    if (redirect) {
-      window.history.replaceState(null, "", redirect);
-    }
-  }, []);
-
+function Home() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        {/* 👇 IMPORTANT: basename must match repo name */}
-        <HashRouter basename="/nimit-muni-portfolio">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </HashRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <div style={{ color: "white", padding: "40px" }}>
+      <h1>Site Loaded Successfully</h1>
+      <p>If you can see this, GitHub Pages + Vite is working.</p>
+    </div>
   );
-};
+}
 
-export default App;
+export default function App() {
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </HashRouter>
+  );
+}
