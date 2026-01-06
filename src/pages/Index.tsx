@@ -1,3 +1,4 @@
+import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -8,29 +9,16 @@ import ContactSection from "@/components/ContactSection";
 const Index = () => {
   return (
     <>
-      <section id="hero">
-        <HeroSection />
-      </section>
+      {/* NAVIGATION MUST BE FIRST */}
+      <Navigation />
 
-      <section id="about">
-        <AboutSection />
-      </section>
-
-      <section id="skills">
-        <SkillsSection />
-      </section>
-
-      <section id="experience">
-        <ExperienceSection />
-      </section>
-
-      <section id="portfolio">
-        <PortfolioSection />
-      </section>
-
-      <section id="contact">
-        <ContactSection />
-      </section>
+      {/* EACH SECTION HANDLES ITS OWN ID */}
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <ExperienceSection />
+      <PortfolioSection />
+      <ContactSection />
     </>
   );
 };

@@ -14,9 +14,7 @@ export default function App() {
         <Toaster />
         <Sonner />
         <HashRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-          </Routes>
+            <Index />
         </HashRouter>
       </TooltipProvider>
     </QueryClientProvider>

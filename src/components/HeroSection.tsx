@@ -50,34 +50,35 @@ const HeroSection = () => {
       </div>
 
       {/* IMAGE — FULL BLEED, RESPONSIVE BEHAVIOR */}
-      <div
-        className="
-          absolute inset-y-0 right-0
-          w-[55%]
-          max-md:w-full
-          max-md:opacity-35
-          max-md:blur-[1px]
-          z-0
-        "
-      >
-        <img
-          src={heroImage}
-          alt="Nimit Muni performing on stage"
-          className="w-full h-full object-cover object-center brightness-110 contrast-105"
-        />
+<div
+  className="
+    absolute right-0 top-[64px] bottom-0
+    w-[55%]
+    max-md:w-full
+    max-md:opacity-35
+    max-md:blur-[1px]
+    z-0
+    pointer-events-none
+  "
+>
+  <img
+    src={heroImage}
+    alt="Nimit Muni performing on stage"
+    className="w-full h-full object-cover object-center brightness-110 contrast-105"
+  />
 
-        {/* Gradient — stronger on mobile, lighter on desktop */}
-        <div
-          className="
-            absolute inset-0
-            bg-gradient-to-r
-            from-black
-            via-black/30
-            sm:via-black/20
-            to-transparent
-          "
-        />
-      </div>
+  <div
+    className="
+      absolute inset-0
+      bg-gradient-to-r
+      from-black
+      via-black/30
+      sm:via-black/20
+      to-transparent
+    "
+  />
+</div>
+
     </section>
   );
 };
