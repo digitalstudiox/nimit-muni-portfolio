@@ -57,6 +57,7 @@ const HeroSection = () => {
           max-md:w-full
           max-md:opacity-35
           max-md:blur-[1px]
+          z-0
         "
       >
         <img

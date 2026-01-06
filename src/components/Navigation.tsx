@@ -19,7 +19,10 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = navLinks.map(link => link.href.substring(1));
+      const sections = navLinks.map((link) =>
+        link.href.substring(1)
+      );
+
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element) {
@@ -38,7 +41,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-black transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] bg-black transition-all duration-300 ${
         isScrolled ? "py-3" : "py-5"
       }`}
     >
@@ -79,7 +82,11 @@ const Navigation = () => {
         <button
           className="md:hidden text-white p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-label={
+            isMobileMenuOpen
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
           aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -88,8 +95,10 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-0 top-[64px] bg-black transition-all duration-300 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        className={`md:hidden fixed inset-0 top-[64px] z-[90] bg-black transition-all duration-300 ${
+          isMobileMenuOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible"
         }`}
       >
         <ul className="flex flex-col items-center justify-center h-full gap-10 -mt-20">
