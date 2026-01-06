@@ -2,15 +2,15 @@ import { useRef, useState } from "react";
 import { X, Play } from "lucide-react";
 
 const portfolioItems = [
-  { id: 1, video: "/videos/performance-1.mp4", poster: "/thumbnails/1.jpg" },
-  { id: 2, video: "/videos/performance-2.mp4", poster: "/thumbnails/2.jpg" },
-  { id: 3, video: "/videos/performance-3.mp4", poster: "/thumbnails/3.jpg" },
-  { id: 4, video: "/videos/performance-4.mp4", poster: "/thumbnails/4.jpg" },
-  { id: 5, video: "/videos/performance-5.mp4", poster: "/thumbnails/5.jpg" },
-  { id: 6, video: "/videos/performance-6.mp4", poster: "/thumbnails/6.jpg" },
-  { id: 7, video: "/videos/performance-7.mp4", poster: "/thumbnails/7.jpg" },
-  { id: 8, video: "/videos/performance-8.mp4", poster: "/thumbnails/8.jpg" },
-  { id: 9, video: "/videos/performance-9.mp4", poster: "/thumbnails/9.jpg" },
+  { id: 1, video: "videos/performance-1.mp4"},
+  { id: 2, video: "videos/performance-2.mp4"},
+  { id: 3, video: "videos/performance-3.mp4"},
+  { id: 4, video: "videos/performance-4.mp4"},
+  { id: 5, video: "videos/performance-5.mp4"},
+  { id: 6, video: "videos/performance-6.mp4"},
+  { id: 7, video: "videos/performance-7.mp4"},
+  { id: 8, video: "videos/performance-8.mp4"},
+  { id: 9, video: "videos/performance-9.mp4"},
 ];
 
 export default function PortfolioSection() {
@@ -45,9 +45,12 @@ export default function PortfolioSection() {
           {portfolioItems.map((item) => (
             <VideoCard
               key={item.id}
-              video={item.video}
-              poster={item.poster}
-              onClick={() => setSelectedVideo(item.video)}
+              video={`${import.meta.env.BASE_URL}${item.video}`}
+              onClick={() =>
+                setSelectedVideo(
+                  `${import.meta.env.BASE_URL}${item.video}`
+                )
+              }
             />
           ))}
         </div>
@@ -84,7 +87,6 @@ export default function PortfolioSection() {
 
 function VideoCard({
   video,
-  poster,
   onClick,
 }: {
   video: string;
@@ -97,12 +99,18 @@ function VideoCard({
     <div
       className="group relative overflow-hidden rounded-2xl cursor-pointer hover-lift"
       onMouseEnter={() => {
-        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        if (
+          typeof window !== "undefined" &&
+          window.matchMedia("(hover: hover) and (pointer: fine)").matches
+        ) {
           videoRef.current?.play();
         }
       }}
       onMouseLeave={() => {
-        if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        if (
+          typeof window !== "undefined" &&
+          window.matchMedia("(hover: hover) and (pointer: fine)").matches
+        ) {
           if (videoRef.current) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
@@ -115,7 +123,6 @@ function VideoCard({
         <video
           ref={videoRef}
           src={video}
-          poster={poster}
           muted
           playsInline
           preload="metadata"
